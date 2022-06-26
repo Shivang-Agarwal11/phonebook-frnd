@@ -26,7 +26,7 @@ function App() {
         
       // return  console.log(details)
       })
-       setContacts([...contacts,...details])
+       setContacts([...details])
        isGettingData(true)
       // console.log((res.data))
       return;
