@@ -1,0 +1,30 @@
+.ui-base{
+    margin: 10px 30px;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+.heading{
+    display: flex;
+    padding-left: 30px;
+    height: 90px;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: space-between;
+}
+.add-button{
+    /* width: 100px; */
+            margin: 10px;
+            text-align: center;
+            padding-right: 30px;
+            
+        }
+.add-button button,.field button {
+            border: 3px solid #347BF6;
+            border-radius: 5px;
+            padding: 10px 20px;
+            height: 50px;
+            color:white;
+            justify-content: center;
+    background-color: #347BF6;
+    cursor: pointer;
+}
