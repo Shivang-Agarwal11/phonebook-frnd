@@ -3,6 +3,7 @@ import Header from './componenets/Header/Header';
 import AddContact from './componenets/AddContact/AddContact';
 import ContactList from './componenets/ContactList/ContactList';
 import { useState,useEffect } from "react";
+import './App.css';
 const axios=require('axios')
 
 
@@ -23,12 +24,9 @@ function App() {
       const details=[]
       obj.map((contact)=>{
         return details.push(contact)
-        
-      // return  console.log(details)
       })
        setContacts([...details])
        isGettingData(true)
-      // console.log((res.data))
       return;
     }).catch((e)=>console.log(e));
 
@@ -57,6 +55,18 @@ function App() {
     })
   }
 
+  const updateContactHandler=(contact)=>{
+    var id=contact._id
+    // console.log(contact)
+    axios.patch(`https://phonebked.herokuapp.com/contact/${id}`,contact, { headers: { 'Content-Type': 'application/json'}}).then((res)=>{
+      // console.log(res);
+      return ;
+    }).catch((e)=>{
+      console.log(e);
+    })
+    isGettingData(false)
+  }
+
   const removeContactHandler=(id)=>{
     const newContactList=contacts.filter((contact)=>{
       return contact._id!== id;
@@ -69,18 +79,16 @@ function App() {
     setContacts(newContactList);
   }
 
-  const updateList=()=>{
-    isGettingData(true)
-  }
+ 
 
   return (
-    <div className="App">
+    <div className="App" id='App'>
       {getData===false?getContactFromBcknd(getData):<p></p>}
       <header className="App-header">
       <Header/>
       <div className='container'>
-      <AddContact onAddContact={onAddContact} update={updateList}/>
-      <ContactList contacts={contacts} getContactId={removeContactHandler}/> 
+      <AddContact onAddContact={onAddContact}/>
+      <ContactList contacts={contacts} getContactId={removeContactHandler} updateContactHandler={updateContactHandler}/> 
         </div>
       </header>
     </div>

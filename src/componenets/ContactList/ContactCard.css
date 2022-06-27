@@ -47,9 +47,26 @@
             color: white;
             border-radius: 9px;
             background-color: #CB444A;
+            cursor: pointer;
             
         }
+        .icon:hover{
+            color: #CB444A;
+            background-color: white;
+        }
         .update-icon{
-            background-color: rgb(127, 157, 255);
+    cursor: pointer;
+    height: 30px;
+    /* width: 30px; */
+            background-color: rgb(127, 240, 255);
             border-radius: 9px;
+}
+.update-icon:hover{
+    background-color: aliceblue;
+    color: rgb(127, 157, 255);
+}
+
+.update{
+    align-items: center;
+    position: fixed;
 }

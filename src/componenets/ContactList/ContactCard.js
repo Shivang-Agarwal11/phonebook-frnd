@@ -1,10 +1,25 @@
 import React from "react";
 import './ContactCard.css';
 import {AiFillDelete} from 'react-icons/ai';
-import {GrDocumentUpdate} from 'react-icons/gr'
+
+import{FiEdit} from 'react-icons/fi'
+import { useState } from "react";
+import UpdateContact from "../UpdateContact/UpdateContact";
+
 
 const ContactCard=(props)=>{
     const {_id,firstName,lastName,number}=props.contact
+
+    const [isUpdate,setIsUpdating]=useState(false)
+
+    const update=()=>{
+        var blur=document.getElementById('App');
+        blur.classList.toggle('blur')
+        setIsUpdating(true);
+    }
+    const onCancelUpdate=()=>{
+        setIsUpdating(false);
+    }
     return(
         <div className="item">
                 <div className="contact-name">
@@ -16,9 +31,10 @@ const ContactCard=(props)=>{
                 <button className="icon" onClick={()=>props.clickHandler(_id)}>
                     <AiFillDelete/>
                 </button>
-                <button className="update-icon" onClick={()=>alert("Update Contact")}>
-                    <GrDocumentUpdate/>
-                </button>
+                {isUpdate===false?<button className="update-icon" onClick={update}>
+                    <FiEdit/>
+                </button>:<UpdateContact contact={{_id:_id,firstName:firstName,lastName:lastName,number:number}} className="update" onCancelUpdate={onCancelUpdate} 
+                UpdateContactHandler={props.updateContactHandler}/>}
             </div>
     );
 
