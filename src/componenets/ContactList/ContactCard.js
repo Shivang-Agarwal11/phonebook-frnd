@@ -3,6 +3,8 @@ import './ContactCard.css';
 import {AiFillDelete} from 'react-icons/ai';
 
 import{FiEdit} from 'react-icons/fi'
+
+import {IoCallOutline} from 'react-icons/io5';
 import { useState } from "react";
 import UpdateContact from "../UpdateContact/UpdateContact";
 
@@ -26,7 +28,7 @@ const ContactCard=(props)=>{
                     {firstName} {lastName}
                 </div>
                 <div className="contact-number">
-                    {number}
+                    <IoCallOutline/>{number}
                 </div>
                 <button className="icon" onClick={()=>props.clickHandler(_id)}>
                     <AiFillDelete/>

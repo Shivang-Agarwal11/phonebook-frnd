@@ -60,11 +60,11 @@ function App() {
     // console.log(contact)
     axios.patch(`https://phonebked.herokuapp.com/contact/${id}`,contact, { headers: { 'Content-Type': 'application/json'}}).then((res)=>{
       // console.log(res);
+      isGettingData(false)
       return ;
     }).catch((e)=>{
       console.log(e);
     })
-    isGettingData(false)
   }
 
   const removeContactHandler=(id)=>{
